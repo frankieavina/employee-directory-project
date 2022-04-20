@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import axios from "axios";
 import './App.css';
+import { getEmployees } from './utils/employees';
+import EmployeeList from './components/EmployeeList';
 
 function App() {
 
-let [ employees, setEmployees ] = useState([]);
+  const [employees, setEmployees] = useState([]);
   useEffect(() => {
-    async function getEmployees() {
-      const results = await axios('https://randomuser.me/api/');
-      setEmployees(results.data)
-    }
-    getEmployees();
+    const storedEmployees = getEmployees().then((data) => {
+      console.log('Employees Data:',data.results); 
+      setEmployees(data.results);
+    }); 
   },[])
-
-console.log(employees.results)
 
   return (
     <div className="App">
       Hello World 
+      <EmployeeList employees={ employees } />
     </div>
   );
 }
