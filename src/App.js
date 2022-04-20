@@ -26,6 +26,7 @@ function App() {
     { value: email },
     { value: location },
     { value: department},
+    {value: phone}
   ] = formFields;
  
 
@@ -40,8 +41,8 @@ function App() {
     e.preventDefault();
 
     alert(
-      `Hey ${fName} ${lName}! This is your info: Your email is ${email}, and your located at ${location},
-      your department is ${department}!`
+      `Hey ${fName} ${lName}! This is your info: Your email is ${email}, you're located at ${location},
+      your department is ${department}, and your number is ${phone}!`
     );
     // setEmployees(e)
     setFormFields(initialFields)
@@ -55,7 +56,6 @@ function App() {
       }
       return field; 
     })
-    
     setFormFields(newFormFields)
   }
 
