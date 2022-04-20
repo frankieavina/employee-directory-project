@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* ------------------- styling for new employee and overwrite bootstrap ---------------------- */
+.labelStyling{
+  font-size: 0.5rem;
+}
+
+.inputField{
+  font-size: 0.5rem;
+}
+
+.addPerBtn{
+  font-size: 0.5rem;
+}
+/* -------------------------------------------------------------------------------------------- */

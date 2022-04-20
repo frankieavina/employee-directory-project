@@ -2,7 +2,7 @@ import React from 'react';
 
 const Button = ({ type = 'button', children, className, disabled }) => {
   return (
-    <>
+    <div className='buttonBody'>
       {type === 'submit' ? (
         <button type="submit" className={className} disabled={disabled}>
           {children}
@@ -12,7 +12,7 @@ const Button = ({ type = 'button', children, className, disabled }) => {
           {children}
         </button>
       )}
-    </>
+    </div>
   );
 };
 

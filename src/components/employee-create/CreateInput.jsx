@@ -11,20 +11,26 @@ const Input = ({
   errorMessage = 'Invalid input',
 }) => {
   return (
-    <section className={!isValid ? 'error' : ''}>
-      <label htmlFor={label}>
-        {label}:
+    <div className={isValid? 'form-group has-success formItem':'form-group has-danger formItem'}>
+      <div>
+       <label className='col-form-label labelStyling' htmlFor={label}>{label}: </label> 
+      </div>
+      <div>
         <input
-          name={name}
-          type={type}
-          id={name}
-          placeholder={placeholder}
-          onChange={onChange}
-          value={value}
-        />
-      </label>
-      {!isValid && <p>Error: {errorMessage}</p>}
-    </section>
+            name={name}
+            type={type}
+            id={name}
+            placeholder={placeholder}
+            onChange={onChange}
+            value={value}
+            className={isValid ? ' inputField form-control form-control-sm is-valid' : ' inputField form-control form-control-sm is-invalid error'}
+            
+          />
+      </div>
+      <div className='error'>
+        {!isValid && <p>Invalid {errorMessage}</p>} 
+      </div>         
+    </div>
   );
 };
 

@@ -5,7 +5,7 @@ const initialFields = [
       type: 'text',
       placeholder: 'Frankie',
       value: '',
-      errorMessage: "'First Name' must contain at least one character!",
+      errorMessage: "",
       validate(val) {
         return !!(val && val.length > 0);
       },
@@ -16,7 +16,7 @@ const initialFields = [
       type: 'text',
       placeholder: 'Avina',
       value: '',
-      errorMessage: "'Last Name' must contain at least one character!",
+      errorMessage: "",
       validate(val) {
         return !!(val && val.length > 0);
       },
@@ -24,10 +24,10 @@ const initialFields = [
     {
       label: 'Email Address',
       name: 'email',
-      type: 'text',
+      type: 'email',
       placeholder: 'employee@bitwise.com',
       value: '',
-      errorMessage: "'Email' must contain valid email address!",
+      errorMessage: "",
       validate(val) {
         return !!(val && val.length > 0);
       },
@@ -38,7 +38,7 @@ const initialFields = [
       type: 'text',
       placeholder: 'Denver, CO',
       value: '',
-      errorMessage: "'Location' must be valid!",
+      errorMessage: "",
       validate(val) {
         return !!(val && val.length > 0);
       },
@@ -49,9 +49,20 @@ const initialFields = [
         type: 'text',
         placeholder: 'Project Management',
         value: '',
-        errorMessage: "'Department' must be valid!",
+        errorMessage: "",
         validate(val) {
           return !!(val && val.length > 0);
+        },
+      },
+      {
+        label: 'Phone',
+        name: 'phone',
+        type: 'text',
+        placeholder: '01-23-45-67-89',
+        value: '',
+        errorMessage: "",
+        validate(val) {
+          return !!(val && val.length>0);
         },
       },
   ];
