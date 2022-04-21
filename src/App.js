@@ -6,9 +6,8 @@ import Button from './components/employee-create/CreateButton';
 import Form from './components/employee-create/CreateForm'; 
 import Input from './components/employee-create/CreateInput';
 import initialFields from './data';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
-
-
+import { FaEye, FaEyeSlash, FaRedo} from 'react-icons/fa';
+import SearchBar from './components/SearchComponent/SearchBar';
 
 
 function App() {
@@ -62,6 +61,10 @@ function App() {
       setShowForm(!showForm);
   }
 
+  const handleSearch = (e) =>{
+    console.log(e.target.value);
+  }
+
   return (
       <div className="newEmployeeBody">
         <div className='headerNewEmployee'>
@@ -96,13 +99,18 @@ function App() {
                   />
                 )
               )}
-              <Button type="submit" disabled={formIsInvalid} className={!formIsInvalid ? 'btn btn-info mt-3 addPerBtn' : 'btn btn-secondary disabled mt-3 addPerBtn'}>
+              <Button type="submit" disabled={formIsInvalid} className={!formIsInvalid ? 'btn btn-info mt-3 addPerBtn text-black' : 'btn btn-secondary disabled mt-3 addPerBtn'}>
                 Add New Employee
               </Button>
             </Form>            
           </div>
         </div>
         }
+        <div className='headerSearchBar'>
+          <Header type='h8'>View/Search Employees:</Header>
+          <FaRedo onClick={handleShowCard}/>
+        </div>
+        <SearchBar onClick={handleSearch}/>
       </div>
   );
 }
