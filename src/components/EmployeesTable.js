@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EmployeeList = () => {
+const EmployeesTable = () => {
   return (
     <div><table className="table">
     <thead>
@@ -36,4 +36,4 @@ const EmployeeList = () => {
   )
 }
 
-export default EmployeeList;
+export default EmployeesTable;

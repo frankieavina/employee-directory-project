@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { getEmployees } from './utils/employees';
-import EmployeeList from './components/EmployeeList';
+import EmployeesTable from './components/EmployeesTable';
 
 function App() {
 
@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       Hello World 
-      <EmployeeList employees={ employees } />
+      <EmployeesTable employees={ employees } />
     </div>
   );
 }
