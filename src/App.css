@@ -1,1 +1,52 @@
+/* ----------------------------- css for adding new employee ----------------------- */
+  .addPerBtn{
+     width: 33%;
+  }
 
+  .buttonBody{
+    display: flex;
+    justify-content: center;
+    width: 100%; 
+  } 
+  
+  .formBody{
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-around; 
+  }
+
+  form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    font-size: 0.5rem;
+  }
+
+  .error{
+    color: red; 
+    font-weight: 500;
+  }
+
+  .headerNewEmployee{
+    display:flex; 
+  }
+
+  input.error{
+    border: 2px solid red; 
+  }
+
+  svg{
+    margin-left: 10px;
+    margin-top: 2px;
+  }
+
+  svg:hover{
+    cursor: pointer;
+    background-color: gray;
+  }
+
+  .newEmployeeBody {
+    margin: 0 auto;
+    width: 80%;
+  }
+  /* --------------------------------------------------------------------------------------------------- */
