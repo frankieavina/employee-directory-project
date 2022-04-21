@@ -53,7 +53,6 @@ function App() {
       `Hey ${fName} ${lName}! This is your info: Your email is ${email}, you're located at ${location},
        and your number is ${phone}!`
     );
-    //setEmployees(e)
 
     setEmployees(prevState => [...prevState,newEmployeeData]);
     setFormFields(initialFields)
