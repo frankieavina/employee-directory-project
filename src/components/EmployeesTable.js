@@ -1,28 +1,60 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const EmployeesTable = (props) => {
 
-  const [table, setTable] = useState([]);
+  // const [table, setTable] = useState();
+  
+  // useEffect(() => {
+  //   setTable(initTable());
+  // },[]);
 
   // console.log(`Employees Table: ${props.test}`);
-  props.employees.map(obj => {
-    // This gets the first name and last name
-    console.log(obj.name);
-    // This gets the email
-    console.log(obj.email);
-    console.log(obj.location);
-    console.log(obj.location.city);
-    console.log(obj.location.state);
-    console.log(obj.name.first);
-    console.log(obj.name.last);
-  })
+//   const initTable = () => { 
+    
+//     const tableData = props.employees.map(obj => {
+//     // This gets the first name and last name
+//     // console.log(obj.name);
+//     // // This gets the email
+//     // console.log(obj.email);
+//     // console.log(obj.location);
+//     // console.log(obj.location.city);
+//     // console.log(obj.location.state);
+//     // console.log(obj.name.first);
+//     // console.log(obj.name.last);
+//     // tableData.push(obj.email);
+//    return obj.email;
+//     });
+//     return tableData;
+// }
+
+
+    
+  const tableData = props.employees.map(obj => {
+      return {
+        "firstName": obj.name.first ,
+        "lastName": obj.name.last,
+        "email": obj.email,
+        "location": `${obj.location.city}, ${obj.location.state}`,
+        "phone": obj.phone
+      }
+  });
+
+
+
+// Filter First Name
+// Filter Last Name
+// Filter First Name
+// Filter First Name
+
+console.log('Test:', tableData);
 
   return (
     
-    <div><table className="table">
+    <div>
+    <table className="table">
     <thead>
       <tr>
-        <th scope="col">First Name</th>
+        <th scope="col">First Name </th>
         <th scope="col">Last Name</th>
         <th scope="col">Email Address</th>
         <th scope="col">Department</th>
@@ -30,26 +62,25 @@ const EmployeesTable = (props) => {
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
+    
+     { 
+      tableData.map( obj => {
+       
+        return <tr>
+                  <td>{obj.firstName}</td>
+                  <td>{obj.lastName}</td>
+                  <td>{obj.email}</td>
+                  <td>{obj.location}</td>
+                  <td>{obj.phone}</td>
+                </tr>
+  
+    })  }
+  
+    
+    
     </tbody>
-  </table></div>
+  </table>
+  </div>
   )
 }
 
