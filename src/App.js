@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import axios from "axios";
 import './App.css';
 import { getEmployees } from './utils/employees';
 import Header from './components/employee-create/CreateHeader';
 import Button from './components/employee-create/CreateButton';
 import Form from './components/employee-create/CreateForm'; 
 import Input from './components/employee-create/CreateInput';
+import EmployeesTable from './components/EmployeesTable';
 import initialFields from './data';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
@@ -104,6 +104,7 @@ function App() {
           </div>
         </div>
         }
+        <EmployeesTable employees={ employees } />
       </div>
   );
 }
