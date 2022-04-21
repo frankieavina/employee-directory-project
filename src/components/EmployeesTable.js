@@ -59,7 +59,7 @@ console.log(names);
   return (
     
     <div>
-    <table  style={{width: "900px"}} className=" table text-success">
+    <table  style={{width: "920px", margin: "auto"}} className=" table text-success">
     <thead>
       <tr>
         <th scope="col" onClick={ filterByFirstName }>
