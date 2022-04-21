@@ -42,19 +42,29 @@ const EmployeesTable = (props) => {
 
 
 // Filter First Name
+const filterByFirstName = () => {
+  alert('Clicked');
+}
 // Filter Last Name
 // Filter First Name
 // Filter First Name
 
 console.log('Test:', tableData);
+let names = tableData.map( obj => {
+  return obj.firstName;
+} )
 
+names = names.sort()
+console.log(names);
   return (
     
     <div>
-    <table className="table">
+    <table  style={{width: "900px"}} className=" table text-success">
     <thead>
       <tr>
-        <th scope="col">First Name </th>
+        <th scope="col" onClick={ filterByFirstName }>
+          First Name 
+          </th>
         <th scope="col">Last Name</th>
         <th scope="col">Email Address</th>
         <th scope="col">Department</th>
