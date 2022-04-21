@@ -43,17 +43,17 @@ const initialFields = [
         return !!(val && val.length > 0);
       },
     },
-    {
-        label: 'Department',
-        name: 'department',
-        type: 'text',
-        placeholder: 'Project Management',
-        value: '',
-        errorMessage: "",
-        validate(val) {
-          return !!(val && val.length > 0);
-        },
-      },
+    // {
+    //     label: 'Gender',
+    //     name: 'gender',
+    //     type: 'text',
+    //     placeholder: 'Project Management',
+    //     value: '',
+    //     errorMessage: "",
+    //     validate(val) {
+    //       return !!(val && val.length > 0);
+    //     },
+    //   },
       {
         label: 'Phone',
         name: 'phone',

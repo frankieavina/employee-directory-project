@@ -25,7 +25,6 @@ function App() {
     { value: lName },
     { value: email },
     { value: location },
-    { value: department},
     {value: phone}
   ] = formFields;
  
@@ -42,7 +41,7 @@ function App() {
 
     alert(
       `Hey ${fName} ${lName}! This is your info: Your email is ${email}, you're located at ${location},
-      your department is ${department}, and your number is ${phone}!`
+       and your number is ${phone}!`
     );
     // setEmployees(e)
     setFormFields(initialFields)
