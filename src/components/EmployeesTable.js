@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const EmployeesTable = () => {
+const EmployeesTable = (props) => {
+
+  const [table, setTable] = useState([]);
+
+  // console.log(`Employees Table: ${props.test}`);
+  props.employees.map(obj => {
+    // This gets the first name and last name
+    console.log(obj.name);
+    // This gets the email
+    console.log(obj.email);
+    console.log(obj.location);
+    console.log(obj.location.city);
+    console.log(obj.location.state);
+    console.log(obj.name.first);
+    console.log(obj.name.last);
+  })
+
   return (
+    
     <div><table className="table">
     <thead>
       <tr>
