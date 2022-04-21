@@ -1,10 +1,11 @@
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import { useState, useEffect } from 'react';
 import { getEmployees } from './utils/employees';
 import Header from './components/employee-create/CreateHeader';
 import Button from './components/employee-create/CreateButton';
 import Form from './components/employee-create/CreateForm'; 
 import Input from './components/employee-create/CreateInput';
+import EmployeesTable from './components/EmployeesTable';
 import initialFields from './data';
 import { FaEye, FaEyeSlash, FaRedo} from 'react-icons/fa';
 import SearchBar from './components/SearchComponent/SearchBar';
@@ -111,6 +112,7 @@ function App() {
           <FaRedo onClick={handleShowCard}/>
         </div>
         <SearchBar onClick={handleSearch}/>
+        <EmployeesTable employees={ employees } />
       </div>
   );
 }
