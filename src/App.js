@@ -8,6 +8,8 @@ import Input from './components/employee-create/CreateInput';
 import EmployeesTable from './components/EmployeesTable';
 import initialFields from './data';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+// importing context 
+import EmployeeContext from './context/EmployeeContext'; 
 
 
 
@@ -40,11 +42,21 @@ function App() {
   const handleFormSubmit = (e) =>{
     e.preventDefault();
 
+    let [city, state] = location.split(','); 
+
+    let newEmployeeData = {
+      name: {first: fName, last: lName},
+      email: email,
+      location:{city, state},
+      phone: phone,
+    }
+
     alert(
       `Hey ${fName} ${lName}! This is your info: Your email is ${email}, you're located at ${location},
        and your number is ${phone}!`
     );
     // setEmployees(e)
+    setEmployees(prevState => [...prevState,newEmployeeData]); 
     setFormFields(initialFields)
   }
 
@@ -65,6 +77,11 @@ function App() {
 
   return (
       <div className="newEmployeeBody">
+      <EmployeeContext.Provider
+        value={{
+          employees: employees, 
+        }}
+      >
         <div className='headerNewEmployee'>
           <Header type="h8">Add a New Employee:</Header>
           {!showForm? <FaEye onClick={handleShowCard}/>: <FaEyeSlash onClick={handleShowCard}/> }        
@@ -104,7 +121,8 @@ function App() {
           </div>
         </div>
         }
-        <EmployeesTable employees={ employees } />
+        <EmployeesTable />      
+      </EmployeeContext.Provider>
       </div>
   );
 }
