@@ -1,3 +1,9 @@
+.title{
+  color: #02b875;
+  margin: 0.75rem 0.5rem 0.5rem 0; 
+}
+
+
 /* ----------------------------- css for adding new employee ----------------------- */
   .addPerBtn{
      width: 33%;
