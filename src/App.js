@@ -80,7 +80,7 @@ function App() {
       <EmployeeContext.Provider
         value={{
           employees: employees, 
-        }}
+        }} 
       >
         <div className='headerNewEmployee'>
           <Header type="h8">Add a New Employee:</Header>
