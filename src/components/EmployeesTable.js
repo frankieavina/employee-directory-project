@@ -1,35 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+// importing context
+import EmployeeContext from '../context/EmployeeContext';
 
-const EmployeesTable = (props) => {
+const EmployeesTable = () => {
 
-  // const [table, setTable] = useState();
-  
-  // useEffect(() => {
-  //   setTable(initTable());
-  // },[]);
-
-  // console.log(`Employees Table: ${props.test}`);
-//   const initTable = () => { 
+  // consuming or using employees context 
+  const { employees } = useContext(EmployeeContext); 
     
-//     const tableData = props.employees.map(obj => {
-//     // This gets the first name and last name
-//     // console.log(obj.name);
-//     // // This gets the email
-//     // console.log(obj.email);
-//     // console.log(obj.location);
-//     // console.log(obj.location.city);
-//     // console.log(obj.location.state);
-//     // console.log(obj.name.first);
-//     // console.log(obj.name.last);
-//     // tableData.push(obj.email);
-//    return obj.email;
-//     });
-//     return tableData;
-// }
-
-
-    
-  const tableData = props.employees.map(obj => {
+  const tableData = employees.map(obj => {
       return {
         "firstName": obj.name.first ,
         "lastName": obj.name.last,
