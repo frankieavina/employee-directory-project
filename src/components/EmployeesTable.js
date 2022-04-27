@@ -1,97 +1,131 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const EmployeesTable = (props) => {
 
-  // const [table, setTable] = useState();
-  
-  // useEffect(() => {
-  //   setTable(initTable());
-  // },[]);
-
-  // console.log(`Employees Table: ${props.test}`);
-//   const initTable = () => { 
-    
-//     const tableData = props.employees.map(obj => {
-//     // This gets the first name and last name
-//     // console.log(obj.name);
-//     // // This gets the email
-//     // console.log(obj.email);
-//     // console.log(obj.location);
-//     // console.log(obj.location.city);
-//     // console.log(obj.location.state);
-//     // console.log(obj.name.first);
-//     // console.log(obj.name.last);
-//     // tableData.push(obj.email);
-//    return obj.email;
-//     });
-//     return tableData;
-// }
-
-
-    
-  const tableData = props.employees.map(obj => {
-      return {
-        "firstName": obj.name.first ,
-        "lastName": obj.name.last,
-        "email": obj.email,
-        "location": `${obj.location.city}, ${obj.location.state}`,
-        "phone": obj.phone
-      }
+  const [isClickedFirstName, setIsClickedFirstName] = useState(false);
+  const [isClickedLastName, setIsClickedLastName] = useState(false);
+  const [isClickedEmail, setIsClickedEmail] = useState(false);
+  const [isClickedLocation, setIsClickedLocation] = useState(false);
+  const [isClickedPhone, setIsClickedPhone] = useState(false);
+ 
+  const table = props.employees.map((obj) => {
+    return {
+      firstName: obj.name.first,
+      lastName: obj.name.last,
+      email: obj.email,
+      location: `${obj.location.city}, ${obj.location.state}`,
+      phone: obj.phone,
+    };
   });
 
-
-
-// Filter First Name
-const filterByFirstName = () => {
-  alert('Clicked');
-}
-// Filter Last Name
-// Filter First Name
-// Filter First Name
-
-console.log('Test:', tableData);
-let names = tableData.map( obj => {
-  return obj.firstName;
-} )
-
-names = names.sort()
-console.log(names);
   return (
-    
     <div>
-    <table  style={{width: "920px", margin: "auto"}} className=" table text-success">
-    <thead>
-      <tr>
-        <th scope="col" onClick={ filterByFirstName }>
-          First Name 
-          </th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Email Address</th>
-        <th scope="col">Department</th>
-        <th scope="col">Location</th>
-      </tr>
-    </thead>
-    <tbody>
-    
-     { 
-      tableData.map( obj => {
-       
-        return <tr>
-                  <td>{obj.firstName}</td>
-                  <td>{obj.lastName}</td>
-                  <td>{obj.email}</td>
-                  <td>{obj.location}</td>
-                  <td>{obj.phone}</td>
-                </tr>
-  
-    })  }
-  
-    
-    
-    </tbody>
-  </table>
-  </div>
-  )
-}
+      <table
+        style={{ width: '920px', margin: 'auto' }}
+        className=" table text-success mt-5"
+      >
+        <thead>
+          <tr>
+            <th
+              scope="col"
+              onClick={() => {
+                if (isClickedFirstName){
+                  console.log('Clicked');
+                  props.filterName('first', isClickedFirstName)
+                  setIsClickedFirstName(false);
+                }  
+                else {
+                  console.log('Not Clicked Yet');
+                 
+                  console.log(isClickedFirstName, 'isClicked')
+                  props.filterName('first', isClickedFirstName)
+                  setIsClickedFirstName(true);
+                }  
+              }}
+            >
+              First Name
+            </th>
+            <th scope="col"
+             onClick={() => {
+              if (isClickedLastName){
+                console.log('Clicked');
+                props.filterName('last', isClickedLastName)
+                setIsClickedLastName(false);
+              }  
+              else {
+                console.log('Not Clicked Yet');
+               
+                console.log(isClickedLastName, 'isClicked')
+                props.filterName('last', isClickedLastName)
+                setIsClickedLastName(true);
+              }  
+            }}>
+              Last Name
+            </th>
+            <th scope="col"
+             onClick={() => {
+              if (isClickedEmail){
+                console.log('Clicked');
+                props.filterByEmailOrPhone('email', isClickedEmail)
+                setIsClickedEmail(false);
+              }  
+              else {
+                console.log('Not Clicked Yet');
+               
+                console.log(isClickedEmail, 'isClicked')
+                props.filterByEmailOrPhone('email', isClickedEmail)
+                setIsClickedEmail(true);
+              }  
+            }}>
+              Email Address
+              </th>
+            <th scope="col"
+            onClick={() => {
+              if (isClickedLocation){
+                console.log('Clicked');
+                props.filterByLocation('city', isClickedLocation)
+                setIsClickedLocation(false);
+              }  
+              else {
+                console.log('Not Clicked Yet');
+               
+                console.log(isClickedLocation, 'isClicked')
+                props.filterByLocation('city', isClickedLocation)
+                setIsClickedLocation(true);
+              }  
+            }}>
+              Location
+              </th>
+            <th scope="col"
+              onClick={() => {
+                if (isClickedPhone){
+                  props.filterByEmailOrPhone('phone', isClickedPhone)
+                  setIsClickedPhone(false);
+                }  
+                else {
+                  props.filterByEmailOrPhone('phone', isClickedPhone)
+                  setIsClickedPhone(true);
+                }  
+              }} 
+            >Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          {table.map((obj) => {
+            return (
+              <tr>
+                <td>{obj.firstName}</td>
+                <td>{obj.lastName}</td>
+                <td>{obj.email}</td>
+                <td>{obj.location}</td>
+                <td>{obj.phone}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 export default EmployeesTable;
