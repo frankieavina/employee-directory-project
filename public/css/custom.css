@@ -1,9 +1,11 @@
 table tr:nth-child(even) {
     background: rgb(171, 255, 210);
+   
   }
   
   table tr:nth-child(odd) {
     background: #f8f8f8;
+   
   }
   
   table tr:hover {

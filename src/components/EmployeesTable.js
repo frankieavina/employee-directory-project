@@ -27,6 +27,7 @@ const EmployeesTable = (props) => {
         <thead>
           <tr>
             <th
+              className={isClickedFirstName ? 'text-success' : "text-dark" }
               scope="col"
               onClick={() => {
                 if (isClickedFirstName){
@@ -45,7 +46,9 @@ const EmployeesTable = (props) => {
             >
               First Name
             </th>
-            <th scope="col"
+            <th
+            className={isClickedLastName ? 'text-success' : "text-dark" } 
+            scope="col"
              onClick={() => {
               if (isClickedLastName){
                 console.log('Clicked');
@@ -62,7 +65,9 @@ const EmployeesTable = (props) => {
             }}>
               Last Name
             </th>
-            <th scope="col"
+            <th 
+             className={isClickedEmail ? 'text-success' : "text-dark" }
+            scope="col"
              onClick={() => {
               if (isClickedEmail){
                 console.log('Clicked');
@@ -79,7 +84,9 @@ const EmployeesTable = (props) => {
             }}>
               Email Address
               </th>
-            <th scope="col"
+            <th 
+            className={isClickedLocation ? 'text-success' : "text-dark" }
+            scope="col"
             onClick={() => {
               if (isClickedLocation){
                 console.log('Clicked');
@@ -96,7 +103,9 @@ const EmployeesTable = (props) => {
             }}>
               Location
               </th>
-            <th scope="col"
+            <th
+             className={isClickedPhone ? 'text-success' : "text-dark" } 
+            scope="col"
               onClick={() => {
                 if (isClickedPhone){
                   props.filterByEmailOrPhone('phone', isClickedPhone)
