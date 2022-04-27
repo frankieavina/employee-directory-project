@@ -36,7 +36,12 @@ const EmployeesTable = (props) => {
             }}>
               Last Name
             </th>
-            <th scope="col">Email Address</th>
+            <th scope="col"
+             onClick={() => {
+              props.filterByEmail();
+            }}>
+              Email Address
+              </th>
             <th scope="col">Department</th>
             <th scope="col">Location</th>
           </tr>

@@ -73,7 +73,7 @@ function App() {
     setShowForm(!showForm);
   };
 
-  // # JESUS/FRANKIE: I moved this method over from EmployeesTable so that the method lives in the same file as its corresponding state array.
+  
   const filterByFirstName = () => {
     // # To avoid mutating state directly (a React no-no) I created a brand new array to filter/sort and spread in the existing values...
     const updatedEmployees = [...employees];
@@ -115,6 +115,27 @@ function App() {
     setEmployees(updatedEmployees);
    
   };
+
+  const filterByEmail = () => {
+    
+    const updatedEmployees = [...employees];
+    updatedEmployees.sort(function (a, b) {
+      let emailA = a.email.toUpperCase(); // ignore upper and lowercase
+      let emailB = b.email.toUpperCase(); // ignore upper and lowercase
+      if (emailA < emailB) {
+        return -1; 
+      }
+      if (emailA > emailB) {
+        return 1; 
+      }
+      return 0; 
+    });
+
+    // # Once the sort/filter is completed, I'm updating state with the new array.
+    setEmployees(updatedEmployees);
+   
+  };
+
 
   return (
     <div className="newEmployeeBody">
@@ -175,7 +196,7 @@ function App() {
         employees={employees}
         filterByFirstName={filterByFirstName}
         filterByLastName={filterByLastName}
-        // # JESUS/FRANKIE: Then you can thread filterByFirstName through to EmployeesTable as a method so that EmployeesTable can use the method as needed.
+        filterByEmail={filterByEmail}
       />
     </div>
   );
