@@ -136,7 +136,7 @@ function App() {
    
   };
 
-  const filterByDepartment = () => {
+  const filterByLocation = () => {
     
     const updatedEmployees = [...employees];
     updatedEmployees.sort(function (a, b) {
@@ -237,7 +237,7 @@ function App() {
         filterByFirstName={filterByFirstName}
         filterByLastName={filterByLastName}
         filterByEmail={filterByEmail}
-        filterByDepartment={filterByDepartment}
+        filterByLocation={filterByLocation}
         filterByPhone={filterByPhone}
       />
     </div>

@@ -42,9 +42,9 @@ const EmployeesTable = (props) => {
               </th>
             <th scope="col"
              onClick={() => {
-              props.filterByDepartment();
+              props.filterByLocation();
             }}>
-              Department
+              Location
               </th>
             <th scope="col"
             onClick={() => {
