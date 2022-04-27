@@ -136,25 +136,25 @@ function App() {
    
   // };
 
-  const filterByLocation = () => {
+  // const filterByLocation = () => {
     
-    const updatedEmployees = [...employees];
-    updatedEmployees.sort(function (a, b) {
-      let cityA = a.location.city.toUpperCase(); // ignore upper and lowercase
-      let cityB = b.location.city.toUpperCase(); // ignore upper and lowercase
-      if (cityA < cityB) {
-        return -1; 
-      }
-      if (cityA > cityB) {
-        return 1; 
-      }
-      return 0; 
-    });
+  //   const updatedEmployees = [...employees];
+  //   updatedEmployees.sort(function (a, b) {
+  //     let cityA = a.location.city.toUpperCase(); // ignore upper and lowercase
+  //     let cityB = b.location.city.toUpperCase(); // ignore upper and lowercase
+  //     if (cityA < cityB) {
+  //       return -1; 
+  //     }
+  //     if (cityA > cityB) {
+  //       return 1; 
+  //     }
+  //     return 0; 
+  //   });
 
-    // # Once the sort/filter is completed, I'm updating state with the new array.
-    setEmployees(updatedEmployees);
+  //   // # Once the sort/filter is completed, I'm updating state with the new array.
+  //   setEmployees(updatedEmployees);
    
-  };
+  // };
 
   const filterByPhone = () => {
     
@@ -216,7 +216,7 @@ function App() {
    
   };
 
-  const filterByEmail = (v, bool) => {
+  const filterByEmailOrPhone = (v, bool) => {
     
     const updatedEmployees = [...employees];
     updatedEmployees.sort(function (a, b) {
@@ -239,6 +239,46 @@ function App() {
 
       let nameA = a[v].toUpperCase(); // ignore upper and lowercase
       let nameB = b[v].toUpperCase(); // ignore upper and lowercase
+
+      if (nameA > nameB) {
+        return -1; //nameA comes first
+      }
+      if (nameA < nameB) {
+        return 1; // nameB comes first
+      }
+      return 0; // names must be equal
+    }
+
+  });
+
+    // # Once the sort/filter is completed, I'm updating state with the new array.
+    setEmployees(updatedEmployees);
+   
+  };
+
+  const filterByLocation = (v, bool) => {
+    
+    const updatedEmployees = [...employees];
+    updatedEmployees.sort(function (a, b) {
+     
+      if (!bool) {
+
+      let nameA = a.location[v].toUpperCase(); // ignore upper and lowercase
+      let nameB = b.location[v].toUpperCase(); // ignore upper and lowercase
+
+      if (nameA < nameB) {
+        return -1; //nameA comes first
+      }
+      if (nameA > nameB) {
+        return 1; // nameB comes first
+      }
+      return 0; // names must be equal
+    }
+
+    else if (bool) {
+
+      let nameA = a.location[v].toUpperCase(); // ignore upper and lowercase
+      let nameB = b.location[v].toUpperCase(); // ignore upper and lowercase
 
       if (nameA > nameB) {
         return -1; //nameA comes first
@@ -316,7 +356,7 @@ function App() {
         filterName={filterName}
         filterByFirstName={filterByFirstName}
         filterByLastName={filterByLastName}
-        filterByEmail={filterByEmail}
+        filterByEmailOrPhone={filterByEmailOrPhone}
         filterByLocation={filterByLocation}
         filterByPhone={filterByPhone}
       />

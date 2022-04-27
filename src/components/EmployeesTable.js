@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const EmployeesTable = (props) => {
 
   const [isClickedFirstName, setIsClickedFirstName] = useState(false);
   const [isClickedLastName, setIsClickedLastName] = useState(false);
   const [isClickedEmail, setIsClickedEmail] = useState(false);
+  const [isClickedLocation, setIsClickedLocation] = useState(false);
+  const [isClickedPhone, setIsClickedPhone] = useState(false);
  
   const table = props.employees.map((obj) => {
     return {
@@ -64,29 +66,47 @@ const EmployeesTable = (props) => {
              onClick={() => {
               if (isClickedEmail){
                 console.log('Clicked');
-                props.filterByEmail('email', isClickedEmail)
+                props.filterByEmailOrPhone('email', isClickedEmail)
                 setIsClickedEmail(false);
               }  
               else {
                 console.log('Not Clicked Yet');
                
                 console.log(isClickedEmail, 'isClicked')
-                props.filterByEmail('email', isClickedEmail)
+                props.filterByEmailOrPhone('email', isClickedEmail)
                 setIsClickedEmail(true);
               }  
             }}>
               Email Address
               </th>
             <th scope="col"
-             onClick={() => {
-              props.filterByLocation();
+            onClick={() => {
+              if (isClickedLocation){
+                console.log('Clicked');
+                props.filterByLocation('city', isClickedLocation)
+                setIsClickedLocation(false);
+              }  
+              else {
+                console.log('Not Clicked Yet');
+               
+                console.log(isClickedLocation, 'isClicked')
+                props.filterByLocation('city', isClickedLocation)
+                setIsClickedLocation(true);
+              }  
             }}>
               Location
               </th>
             <th scope="col"
-            onClick={() => {
-              props.filterByPhone();
-            }} 
+              onClick={() => {
+                if (isClickedPhone){
+                  props.filterByEmailOrPhone('phone', isClickedPhone)
+                  setIsClickedPhone(false);
+                }  
+                else {
+                  props.filterByEmailOrPhone('phone', isClickedPhone)
+                  setIsClickedPhone(true);
+                }  
+              }} 
             >Phone</th>
           </tr>
         </thead>
