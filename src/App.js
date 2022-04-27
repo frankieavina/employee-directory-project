@@ -136,6 +136,26 @@ function App() {
    
   };
 
+  const filterByDepartment = () => {
+    
+    const updatedEmployees = [...employees];
+    updatedEmployees.sort(function (a, b) {
+      let cityA = a.location.city.toUpperCase(); // ignore upper and lowercase
+      let cityB = b.location.city.toUpperCase(); // ignore upper and lowercase
+      if (cityA < cityB) {
+        return -1; 
+      }
+      if (cityA > cityB) {
+        return 1; 
+      }
+      return 0; 
+    });
+
+    // # Once the sort/filter is completed, I'm updating state with the new array.
+    setEmployees(updatedEmployees);
+   
+  };
+
 
   return (
     <div className="newEmployeeBody">
@@ -197,6 +217,7 @@ function App() {
         filterByFirstName={filterByFirstName}
         filterByLastName={filterByLastName}
         filterByEmail={filterByEmail}
+        filterByDepartment={filterByDepartment}
       />
     </div>
   );

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const EmployeesTable = (props) => {
-  // # JESUS/FRANKIE: To avoid weird async issues w/parent state generating child state, I just took the props.employee and stored them as a regular old JS variable...
-
-  // # I also moved the filterByFirstName method to the App component and removed it from this file. This file now uses the version of filterByFirstName passed in as a prop from App.js
+ 
   const table = props.employees.map((obj) => {
     return {
       firstName: obj.name.first,
@@ -18,7 +16,7 @@ const EmployeesTable = (props) => {
     <div>
       <table
         style={{ width: '920px', margin: 'auto' }}
-        className=" table text-success"
+        className=" table text-success mt-5"
       >
         <thead>
           <tr>
@@ -42,7 +40,12 @@ const EmployeesTable = (props) => {
             }}>
               Email Address
               </th>
-            <th scope="col">Department</th>
+            <th scope="col"
+             onClick={() => {
+              props.filterByDepartment();
+            }}>
+              Department
+              </th>
             <th scope="col">Location</th>
           </tr>
         </thead>
