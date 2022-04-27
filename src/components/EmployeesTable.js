@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 const EmployeesTable = (props) => {
+
+  const [isClicked, setIsClicked] = useState(false);
  
   const table = props.employees.map((obj) => {
     return {
