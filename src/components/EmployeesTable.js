@@ -46,7 +46,11 @@ const EmployeesTable = (props) => {
             }}>
               Department
               </th>
-            <th scope="col">Location</th>
+            <th scope="col"
+            onClick={() => {
+              props.filterByPhone();
+            }} 
+            >Phone</th>
           </tr>
         </thead>
         <tbody>

@@ -73,7 +73,7 @@ function App() {
     setShowForm(!showForm);
   };
 
-  
+  //>--- Filter Methods for EmployeesTable 
   const filterByFirstName = () => {
     // # To avoid mutating state directly (a React no-no) I created a brand new array to filter/sort and spread in the existing values...
     const updatedEmployees = [...employees];
@@ -156,6 +156,26 @@ function App() {
    
   };
 
+  const filterByPhone = () => {
+    
+    const updatedEmployees = [...employees];
+    updatedEmployees.sort(function (a, b) {
+      let phoneA = a.phone.toUpperCase(); // ignore upper and lowercase
+      let phoneB = b.phone.toUpperCase(); // ignore upper and lowercase
+      if (phoneA < phoneB) {
+        return -1; 
+      }
+      if (phoneA > phoneB) {
+        return 1; 
+      }
+      return 0; 
+    });
+
+    // # Once the sort/filter is completed, I'm updating state with the new array.
+    setEmployees(updatedEmployees);
+   
+  };
+
 
   return (
     <div className="newEmployeeBody">
@@ -218,6 +238,7 @@ function App() {
         filterByLastName={filterByLastName}
         filterByEmail={filterByEmail}
         filterByDepartment={filterByDepartment}
+        filterByPhone={filterByPhone}
       />
     </div>
   );
