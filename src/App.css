@@ -69,3 +69,8 @@
   .headerSearchBar{
     margin: 0.5rem 0.5rem 0.5rem 0; 
   }
+
+  .formSearch{
+    display: flex;
+    justify-content: start;
+  }

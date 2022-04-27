@@ -12,6 +12,10 @@ import SearchBar from './components/SearchComponent/SearchBar';
 
 
 function App() {
+
+  const [copyEmployeesList, setCopyEmployeesList ] = useState([]);
+  const [redo, setRedo] = useState(false);
+  const [searchWord, setSearchWord] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [formFields, setFormFields] = useState(initialFields);
   const [employees, setEmployees] = useState([]);
@@ -74,6 +78,36 @@ function App() {
   const handleShowCard = () => {
     setShowForm(!showForm);
   };
+
+  const handleRedo = () => {
+    if(redo){
+      setEmployees(copyEmployeesList);
+      setRedo(false);
+    }
+    return 
+  }
+
+  const handleSearchChange = (e) =>{
+    setSearchWord(e.target.value.toLowerCase());
+  }
+/////////////////////////////////////Search Functionality///////////////////////////////////////////////
+  const handleSearch = (e) =>{
+    e.preventDefault(); 
+    console.log(searchWord);
+    setRedo(true); 
+
+    setCopyEmployeesList([...employees]); 
+    const result = [...employees].find(obj =>{
+     return (obj.name.first.toLowerCase() == searchWord || 
+     obj.name.last.toLowerCase() == searchWord ||
+     obj.email.toLowerCase() == searchWord)
+    })
+
+    console.log('Results:', [result])
+    setEmployees([result])
+
+  }
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   //>--- Filter Methods for EmployeesTable 
   const filterByFirstName = () => {
@@ -298,10 +332,6 @@ function App() {
    
   };
 
-  const handleSearch = (e) =>{
-    console.log(e.target.value);
-  }
-
   return (
     <div className="newEmployeeBody">
 
@@ -364,12 +394,24 @@ function App() {
           </div>
         </div>
       )}
-      
+
       <div className='headerSearchBar'>
         <Header type='h8'>View/Search Employees:</Header>
-        <FaRedo onClick={handleShowCard}/>
+        <FaRedo onClick={handleRedo}/>
       </div>
-      <SearchBar onClick={handleSearch}/>
+
+      <form onSubmit={handleSearch} className="formSearch">
+        <div className="form-group searchBar">
+          <div className="input-group mb-3">
+              <input type="text" className="form-control searchInput"
+               placeholder="Employees name" aria-label="Employees name" 
+               id="button-addon2" aria-describedby="button-addon2"
+               onChange={handleSearchChange}
+               />
+              <button className="btn btn-success searchButton text-black" type="submit" id="button-addon2">Button</button>
+          </div>
+        </div>        
+      </form>
 
       <EmployeesTable
         employees={employees}
