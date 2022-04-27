@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 const EmployeesTable = (props) => {
 
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClickedFirstName, setIsClickedFirstName] = useState(false);
+  const [isClickedLastName, setIsClickedLastName] = useState(false);
+  const [isClickedEmail, setIsClickedEmail] = useState(false);
  
   const table = props.employees.map((obj) => {
     return {
@@ -25,20 +27,53 @@ const EmployeesTable = (props) => {
             <th
               scope="col"
               onClick={() => {
-                props.filterByFirstName();
+                if (isClickedFirstName){
+                  console.log('Clicked');
+                  props.filterName('first', isClickedFirstName)
+                  setIsClickedFirstName(false);
+                }  
+                else {
+                  console.log('Not Clicked Yet');
+                 
+                  console.log(isClickedFirstName, 'isClicked')
+                  props.filterName('first', isClickedFirstName)
+                  setIsClickedFirstName(true);
+                }  
               }}
             >
               First Name
             </th>
             <th scope="col"
              onClick={() => {
-              props.filterByLastName();
+              if (isClickedLastName){
+                console.log('Clicked');
+                props.filterName('last', isClickedLastName)
+                setIsClickedLastName(false);
+              }  
+              else {
+                console.log('Not Clicked Yet');
+               
+                console.log(isClickedLastName, 'isClicked')
+                props.filterName('last', isClickedLastName)
+                setIsClickedLastName(true);
+              }  
             }}>
               Last Name
             </th>
             <th scope="col"
              onClick={() => {
-              props.filterByEmail();
+              if (isClickedEmail){
+                console.log('Clicked');
+                props.filterByEmail('email', isClickedEmail)
+                setIsClickedEmail(false);
+              }  
+              else {
+                console.log('Not Clicked Yet');
+               
+                console.log(isClickedEmail, 'isClicked')
+                props.filterByEmail('email', isClickedEmail)
+                setIsClickedEmail(true);
+              }  
             }}>
               Email Address
               </th>
