@@ -8,9 +8,15 @@ import Input from './components/employee-create/CreateInput';
 import Title from './components/Title';
 import EmployeesTable from './components/EmployeesTable';
 import initialFields from './data';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaRedo} from 'react-icons/fa';
+import SearchBar from './components/SearchComponent/SearchBar';
+
 
 function App() {
+
+  const [copyEmployeesList, setCopyEmployeesList ] = useState([]);
+  const [redo, setRedo] = useState(false);
+  const [searchWord, setSearchWord] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [formFields, setFormFields] = useState(initialFields);
   const [employees, setEmployees] = useState([]);
@@ -30,6 +36,7 @@ function App() {
     const storedEmployees = getEmployees().then((data) => {
       console.log('Employees Data:', data.results);
       setEmployees(data.results);
+      setCopyEmployeesList(data.results)
     });
   }, []);
 
@@ -55,7 +62,21 @@ function App() {
         },
       },
     ]);
-    // setEmployees(e)
+    setCopyEmployeesList([
+      ...employees,
+      {
+        name: {
+          first: fName,
+          last: lName,
+        },
+        phone: phone,
+        email: email,
+        location: {
+          city: location.split(', ')[0],
+          state: location.split(', ')[1],
+        },
+      },
+    ]);
     setFormFields(initialFields);
   };
 
@@ -73,6 +94,49 @@ function App() {
   const handleShowCard = () => {
     setShowForm(!showForm);
   };
+
+  //////////// render original list //////////////////
+  const handleRedo = () => {
+    if(redo){
+      setEmployees(copyEmployeesList);
+      setRedo(false);
+    }
+    return 
+  }
+
+/////////////////////////////////////Search Functionality///////////////////////////////////////////////
+  const handleSearchChange = (e) =>{
+    setSearchWord(e.target.value.toLowerCase());
+  }
+
+  const handleSearch = (e) =>{
+    e.preventDefault(); 
+    console.log(searchWord);
+    setRedo(true); 
+
+    //save original list
+    // if(!saveOriList){
+    //   setCopyEmployeesList([...employees]);
+    //   setSaveOriList(true);  
+    // }
+    
+    //filtering object of arrays 
+    const result = [...copyEmployeesList].filter(obj =>{
+     return(
+        obj.name.first.toLowerCase().match(searchWord) ||
+        obj.name.last.toLowerCase().match(searchWord) ||
+        obj.email.toLowerCase().match(searchWord) ||
+        obj.location.city.toLowerCase().match(searchWord) ||
+        obj.location.state.toLowerCase().match(searchWord)
+     );
+    })
+
+    //render new list 
+    console.log('Results:', result)
+    setEmployees(result)
+
+  }
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   //>--- Filter Methods for EmployeesTable 
 
@@ -252,14 +316,36 @@ function App() {
           </div>
         </div>
       )}
+
+      <div className='headerSearchBar'>
+        <Header type='h8'>View/Search Employees:</Header>
+        <FaRedo onClick={handleRedo}/>
+      </div>
+
+      <form onSubmit={handleSearch} className="formSearch">
+        <div className="form-group searchBar">
+          <div className="input-group mb-3">
+              <input type="text" className="form-control searchInput"
+               placeholder="Employees name" aria-label="Employees name" 
+               id="button-addon2" aria-describedby="button-addon2"
+               onChange={handleSearchChange}
+               />
+              <button className="btn btn-success searchButton text-black" type="submit" id="button-addon2">Button</button>
+          </div>
+        </div>        
+      </form>
+
       <EmployeesTable
         employees={employees}
         filterByName={filterByName}
         filterByEmailOrPhone={filterByEmailOrPhone}
         filterByLocation={filterByLocation}
       />
+
     </div>
   );
 }
+
+
 
 export default App;
