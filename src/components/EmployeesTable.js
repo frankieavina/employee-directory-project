@@ -27,19 +27,19 @@ const EmployeesTable = (props) => {
         <thead>
           <tr>
             <th
-              className={isClickedFirstName ? 'text-success' : "text-dark" }
+              className={isClickedFirstName ? 'text-success' : "text-dark" } 
               scope="col"
               onClick={() => {
                 if (isClickedFirstName){
                   console.log('Clicked');
-                  props.filterName('first', isClickedFirstName)
+                  props.filterByName('first', isClickedFirstName)
                   setIsClickedFirstName(false);
                 }  
                 else {
                   console.log('Not Clicked Yet');
                  
                   console.log(isClickedFirstName, 'isClicked')
-                  props.filterName('first', isClickedFirstName)
+                  props.filterByName('first', isClickedFirstName)
                   setIsClickedFirstName(true);
                 }  
               }}
@@ -52,14 +52,14 @@ const EmployeesTable = (props) => {
              onClick={() => {
               if (isClickedLastName){
                 console.log('Clicked');
-                props.filterName('last', isClickedLastName)
+                props.filterByName('last', isClickedLastName)
                 setIsClickedLastName(false);
               }  
               else {
                 console.log('Not Clicked Yet');
                
                 console.log(isClickedLastName, 'isClicked')
-                props.filterName('last', isClickedLastName)
+                props.filterByName('last', isClickedLastName)
                 setIsClickedLastName(true);
               }  
             }}>

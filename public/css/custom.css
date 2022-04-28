@@ -11,3 +11,7 @@ table tr:nth-child(even) {
   table tr:hover {
     background-color: rgb(221, 221, 221);
   }
+
+.apple {
+  background-color: blueviolet;
+}
