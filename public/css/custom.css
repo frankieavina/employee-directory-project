@@ -12,6 +12,7 @@ table tr:nth-child(even) {
     background-color: rgb(221, 221, 221);
   }
 
-.apple {
-  background-color: blueviolet;
+.title-- {
+    font-size: 1.7rem;
+    text-transform: uppercase;
 }

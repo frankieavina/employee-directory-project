@@ -5,6 +5,7 @@ import Header from './components/employee-create/CreateHeader';
 import Button from './components/employee-create/CreateButton';
 import Form from './components/employee-create/CreateForm';
 import Input from './components/employee-create/CreateInput';
+import Title from './components/Title';
 import EmployeesTable from './components/EmployeesTable';
 import initialFields from './data';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -197,6 +198,7 @@ function App() {
 
   return (
     <div className="newEmployeeBody">
+       <Title />
       <div className="headerNewEmployee">
         <Header type="h8">Add a New Employee:</Header>
         {!showForm ? (
