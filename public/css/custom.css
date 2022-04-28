@@ -1,11 +1,18 @@
 table tr:nth-child(even) {
     background: rgb(171, 255, 210);
+   
   }
   
   table tr:nth-child(odd) {
     background: #f8f8f8;
+   
   }
   
   table tr:hover {
     background-color: rgb(221, 221, 221);
   }
+
+.title-- {
+    font-size: 1.7rem;
+    text-transform: uppercase;
+}
