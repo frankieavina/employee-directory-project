@@ -333,14 +333,7 @@ function App() {
   };
 
   return (
-    <div className="newEmployeeBody">
-
-        <div className='title'>
-          <Header type='h4'>Bitwise/Alphaworks Employee Directory</Header>
-        </div>
-    
-                  
-    
+    <div className="newEmployeeBody">    
       <div className="headerNewEmployee">
         <Header type="h8">Add a New Employee:</Header>
         {!showForm ? (
