@@ -34,7 +34,7 @@ function App() {
 
   useEffect(() => {
     const storedEmployees = getEmployees().then((data) => {
-      console.log('Employees Data:', data.results);
+      // console.log('Employees Data:', data.results);
       setEmployees(data.results);
       setCopyEmployeesList(data.results)
     });
@@ -111,14 +111,7 @@ function App() {
 
   const handleSearch = (e) =>{
     e.preventDefault(); 
-    console.log(searchWord);
     setRedo(true); 
-
-    //save original list
-    // if(!saveOriList){
-    //   setCopyEmployeesList([...employees]);
-    //   setSaveOriList(true);  
-    // }
     
     //filtering object of arrays 
     const result = [...copyEmployeesList].filter(obj =>{
@@ -132,7 +125,6 @@ function App() {
     })
 
     //render new list 
-    console.log('Results:', result)
     setEmployees(result)
 
   }
