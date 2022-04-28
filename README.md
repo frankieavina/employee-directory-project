@@ -8,4 +8,4 @@
 
 ### React Component Tree
 
-![react_component_tree](/react_component_tree.jpg)
+![react_component_tree](/assets/react_component_tree.jpg)
